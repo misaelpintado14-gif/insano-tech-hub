@@ -1,0 +1,7 @@
+__pycache__/
+emails/
+config.json
+*.pyc
+.DS_Store
+.idea/
+.vscode/
