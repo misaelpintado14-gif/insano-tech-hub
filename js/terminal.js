@@ -104,6 +104,7 @@ const terminal = (() => {
             printLine('  <span class="terminal-cmd">matrix-rain</span>    - Cascada de codigo de Matrix (Simulador)');
             printLine('  <span class="terminal-cmd">crypto-tracker</span> - Precios de criptomonedas (Simulado)');
             printLine('  <span class="terminal-cmd">neofetch</span>       - Detalles del sistema operativo de desarrollo');
+            printLine('  <span class="terminal-cmd">self-destruct</span>  - Secuencia de autodestrucción y formateo físico');
             printLine('  <span class="terminal-cmd">clear</span>          - Limpia la pantalla de la terminal');
         },
         clear: () => {
@@ -176,6 +177,10 @@ const terminal = (() => {
             survey.resetSurveys();
             loadTableData('estudiantes');
             printLine('Base de datos y encuestas de satisfacción restablecidas con éxito.', 'text-neon');
+        },
+        'self-destruct': () => {
+            printLine('INICIANDO PROTOCOLO DE AUTODESTRUCCIÓN DE DATOS...', 'trend down');
+            app.triggerSelfDestruct();
         },
         'run-tests': () => {
             runAutomatedTests();

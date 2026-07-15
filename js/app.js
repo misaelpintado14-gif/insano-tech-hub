@@ -554,6 +554,39 @@ const app = (() => {
         };
     }
 
+    function triggerSelfDestruct() {
+        showToast('AUTODESTRUCCIÓN', 'Secuencia de autodestrucción iniciada. 5 segundos para reinicio total del sistema.', 'error');
+        let count = 5;
+        
+        // Activar destellos en rojo
+        document.body.classList.add('self-destruct-active');
+        
+        const interval = setInterval(() => {
+            if (count > 0) {
+                // Emitir beep de advertencia
+                sfx.playBeep(400 + (5 - count) * 100, 'sawtooth', 0.2, 0.15);
+                showToast('SECUENCIA CRÍTICA', `Autodestrucción en ${count} segundos...`, 'error');
+                count--;
+            } else {
+                clearInterval(interval);
+                document.body.classList.remove('self-destruct-active');
+                
+                // Audio de explosión
+                sfx.playBeep(80, 'sawtooth', 1.5, 0.3);
+                
+                // Formatear base de datos local
+                secureStorage.remove('insano_academic_db');
+                secureStorage.remove('isVIPActive');
+                
+                showModal('SYSTEM RESET COMPLETED', 'La base de datos local y las credenciales han sido eliminadas por completo. Recargando núcleo...');
+                
+                setTimeout(() => {
+                    window.location.reload();
+                }, 3000);
+            }
+        }, 1000);
+    }
+
     // Tab buttons within single pages
     function initSubTabs() {
         const tabs = document.querySelectorAll('.tab-btn');
@@ -693,7 +726,8 @@ const app = (() => {
         checkVIP,
         escapeHTML,
         sanitizeInput,
-        startMatrixRain
+        startMatrixRain,
+        triggerSelfDestruct
     };
     Object.freeze(publicAPI);
     return publicAPI;

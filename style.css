@@ -2487,3 +2487,12 @@ input.warning { border-color: #f59e0b !important; box-shadow: 0 0 8px rgba(245,1
     0%, 100% { top: 8px; }
     50% { top: 100px; }
 }
+
+.self-destruct-active {
+    animation: criticalFlash 0.5s infinite alternate !important;
+}
+
+@keyframes criticalFlash {
+    from { filter: brightness(1); }
+    to { filter: brightness(0.7) sepia(1) saturate(5) hue-rotate(-50deg); }
+}
