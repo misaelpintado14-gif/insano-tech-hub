@@ -324,10 +324,10 @@ const matriculas = (() => {
 
         tbody.innerHTML = filtered.map(std => `
             <tr>
-                <td>${std.dni}</td>
-                <td><strong>${std.apellidos}, ${std.nombres}</strong></td>
-                <td>${std.correo}</td>
-                <td>${std.telefono}</td>
+                <td>${app.escapeHTML(std.dni)}</td>
+                <td><strong>${app.escapeHTML(std.apellidos)}, ${app.escapeHTML(std.nombres)}</strong></td>
+                <td>${app.escapeHTML(std.correo)}</td>
+                <td>${app.escapeHTML(std.telefono)}</td>
                 <td>
                     <button class="btn-icon-danger" onclick="matriculas.deleteStudent('${std.id}')" title="Eliminar">
                         <i data-lucide="trash-2"></i>
@@ -344,8 +344,8 @@ const matriculas = (() => {
 
         tbody.innerHTML = db.cursos.map(crs => `
             <tr>
-                <td>${crs.id}</td>
-                <td><strong>${crs.nombre}</strong></td>
+                <td>${app.escapeHTML(crs.id)}</td>
+                <td><strong>${app.escapeHTML(crs.nombre)}</strong></td>
                 <td>${crs.creditos}</td>
                 <td>${crs.vacantes_totales}</td>
                 <td class="${crs.vacantes_libres === 0 ? 'text-danger' : 'text-neon'}">${crs.vacantes_libres}</td>
@@ -464,7 +464,7 @@ const matriculas = (() => {
                 return `
                     <tr>
                         <td>CURS-${idx+1}</td>
-                        <td>${course.nombre}</td>
+                        <td>${app.escapeHTML(course.nombre)}</td>
                         <td style="text-align: center;">${course.creditos}</td>
                     </tr>
                 `;

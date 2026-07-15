@@ -701,12 +701,12 @@ const store = (() => {
             <div>------------------------------------------</div>
             <div>ORDEN ID: #INS-${orderNumber}</div>
             <div>FECHA: ${new Date().toLocaleDateString()} ${new Date().toLocaleTimeString()}</div>
-            <div>CLIENTE EMAIL: ${email}</div>
-            <div>PAGO REGISTRADO: ${paymentDetailStr}</div>
+            <div>CLIENTE EMAIL: ${app.escapeHTML(email)}</div>
+            <div>PAGO REGISTRADO: ${app.escapeHTML(paymentDetailStr)}</div>
             <div>ESTADO: EN PROCESO DE ACTIVACIÓN</div>
             <div>------------------------------------------</div>
             <div style="margin: 10px 0;">
-                ${cart.map(item => `<div>* ${item.name} - S/. ${item.price.toFixed(2)}</div>`).join('')}
+                ${cart.map(item => `<div>* ${app.escapeHTML(item.name)} - S/. ${item.price.toFixed(2)}</div>`).join('')}
             </div>
             <div>------------------------------------------</div>
             <div style="font-size: 12px; display: flex; justify-content: space-between; margin-bottom: 3px;">
@@ -726,7 +726,7 @@ const store = (() => {
                 <span>S/. ${total.toFixed(2)}</span>
             </div>
             <div style="margin-top: 15px; padding: 12px; background: rgba(239, 68, 68, 0.1); border: 1px solid #ef4444; border-radius: 4px; font-size: 12px; text-align: center; color: #f87171; font-weight: bold; line-height: 1.5; font-family: monospace;">
-                📧 COMPROBANTE ENVIADO A: <strong>${email}</strong><br>
+                📧 COMPROBANTE ENVIADO A: <strong>${app.escapeHTML(email)}</strong><br>
                 <span style="color: #fca5a5; font-size: 11px;">⚠️ NOTA IMPORTANTE: Si el correo no aparece en tu bandeja principal, por favor revisa tu carpeta de <strong>SPAM o Correo No Deseado</strong>. Los filtros de Gmail a veces clasifican las boletas automáticas de este modo.</span>
             </div>
         `;
