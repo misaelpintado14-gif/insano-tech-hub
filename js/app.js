@@ -428,6 +428,13 @@ const app = (() => {
             .replace(/'/g, '&#39;');
     }
 
+    function sanitizeInput(str) {
+        if (!str) return '';
+        return String(str)
+            .replace(/<[^>]*>/g, '')
+            .replace(/SELECT\s|INSERT\s|UPDATE\s|DELETE\s|DROP\s|UNION\s|OR\s/gi, '');
+    }
+
     function initSecurityHardening() {
         // Block right click context menu
         document.addEventListener('contextmenu', (e) => {
@@ -596,6 +603,7 @@ const app = (() => {
         closeModal,
         showToast,
         checkVIP,
-        escapeHTML
+        escapeHTML,
+        sanitizeInput
     };
 })();

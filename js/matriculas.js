@@ -503,11 +503,11 @@ const matriculas = (() => {
         if (studentForm) {
             studentForm.addEventListener('submit', (e) => {
                 e.preventDefault();
-                const dni = document.getElementById('std-dni').value;
-                const names = document.getElementById('std-names').value;
-                const lastnames = document.getElementById('std-lastnames').value;
-                const email = document.getElementById('std-email').value;
-                const phone = document.getElementById('std-phone').value;
+                const dni = app.sanitizeInput(document.getElementById('std-dni').value.trim());
+                const names = app.sanitizeInput(document.getElementById('std-names').value.trim());
+                const lastnames = app.sanitizeInput(document.getElementById('std-lastnames').value.trim());
+                const email = app.sanitizeInput(document.getElementById('std-email').value.trim());
+                const phone = app.sanitizeInput(document.getElementById('std-phone').value.trim());
 
                 if (addStudent(dni, names, lastnames, email, phone)) {
                     studentForm.reset();
@@ -525,9 +525,9 @@ const matriculas = (() => {
         if (courseForm) {
             courseForm.addEventListener('submit', (e) => {
                 e.preventDefault();
-                const name = document.getElementById('crs-name').value;
-                const credits = document.getElementById('crs-credits').value;
-                const vacancies = document.getElementById('crs-vacancies').value;
+                const name = app.sanitizeInput(document.getElementById('crs-name').value.trim());
+                const credits = app.sanitizeInput(document.getElementById('crs-credits').value.trim());
+                const vacancies = app.sanitizeInput(document.getElementById('crs-vacancies').value.trim());
 
                 if (addCourse(name, credits, vacancies)) {
                     courseForm.reset();
