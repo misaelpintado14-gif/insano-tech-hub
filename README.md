@@ -53,3 +53,10 @@
 
 ## 🌐 Enlaces en Vivo
 * **Portal Web Activo**: [misaelpintado14-gif.github.io/insano-tech-hub/](https://misaelpintado14-gif.github.io/insano-tech-hub/)
+
+---
+
+## ⚖️ Licencia y Propiedad Intelectual
+Este proyecto se distribuye bajo una **Licencia Propietaria Privada**. Todos los derechos están reservados por **Misael Pintado**. Queda terminantemente prohibido copiar, revender, clonar o redistribuir el código, la interfaz gráfica, el motor sintetizador de audio o las ideas de este proyecto sin autorización escrita del autor.
+* Consulta el archivo [LICENSE](LICENSE) completo para más detalles legales.
+* Lee nuestra política de protección de datos y cifrado local en [PRIVACY.md](PRIVACY.md).
