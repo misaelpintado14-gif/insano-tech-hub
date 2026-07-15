@@ -1,55 +1,55 @@
-# INSANO TECH HUB v2.4 🚀
+# ⚡ INSANO TECH HUB v2.50 ⚡
 
-¡Bienvenido al **INSANO TECH HUB**! Un portal web interactivo cyberpunk y neon-themed que ofrece una tienda de hardware, licencias de streaming con panel VIP y un completo sistema de matriculación estudiantil académica.
+<p align="center">
+  <img src="https://img.shields.io/badge/Developer-Misael%20Pintado-00ff88?style=for-the-badge&logo=github&logoColor=black" alt="Developer Misael Pintado" />
+  <img src="https://img.shields.io/badge/Security-Anti--Hacker%20Hardened-ff3333?style=for-the-badge&logo=shield&logoColor=white" alt="Security Shield" />
+  <img src="https://img.shields.io/badge/Deployment-GitHub%20Pages-00e5ff?style=for-the-badge&logo=githubpages&logoColor=black" alt="GitHub Pages Deployment" />
+</p>
 
-## Características Principales 🌟
-
-1. **Tienda Cyberpunk Premium**:
-   - Catálogo dinámico de hardware de gama alta (PCs de Oficina y Gamer) y licencias de streaming (Netflix, Disney+, HBO, etc.).
-   - Panel de filtrado y selector dinámico de planes (Mensual, Anual con Descuento y Permanente).
-
-2. **Pasarela de Pago Segura e Interactiva**:
-   - **Tarjeta de Crédito 3D**: Tarjeta interactiva con detección de franquicia (Visa, Mastercard, Amex) y giro en 3D (flip) al enfocar el campo CVV.
-   - **Yape QR Scanner**: Código QR integrado con línea láser de escaneo animada en bucle.
-   - **Simulación de Transacción**: Carga interactiva con logs en tiempo real del proceso bancario simulado.
-
-3. **Pase VIP INSANO**:
-   - Desbloquea el tema dorado **Sunset Amber**.
-   - Permite matricularse en cursos con **0 vacantes** (Matrícula Express VIP).
-   - Estatus y badge de suscriptor en la barra lateral.
-
-4. **Sistema Académico de Matrículas**:
-   - Formulario de inscripción rápida con validación de DNI en tiempo real e indicador de color para duplicados.
-   - Panel de base de datos integrado para administrar estudiantes, cursos y matrículas.
-
-5. **Audio y Efectos Sintéticos**:
-   - Reproductor Synthwave integrado en la barra lateral con ecualizador visual dinámico de ondas.
-   - Sintetizador retro de efectos de sonido (Web Audio API) al pasar el cursor o dar clic en los botones.
-
-6. **Servidor SMTP Integrado**:
-   - Envío real de comprobantes electrónicos a través del backend en Python (`server.py`).
+```
+  ___ _   _ ____    _   _   _  ___    _____ _____ ____ _   _   _   _ _   _ ____  
+ |_ _| \ | / ___|  / \ | \ | |/ _ \  |_   _| ____/ ___| | | | | | | | | | | __ ) 
+  | ||  \| \___ \ / _ \|  \| | | | |   | | |  _| | |   | |_| | | | | | | |  _ \ 
+  | || |\  |___) / ___ \ |\  | |_| |   | | | |___| |___|  _  | |_| | |_| | |_) |
+ |___|_| \_|____/_/   \_\_| \_|\___/    |_| |_____\____|_| |_|\___/ \___/|____/ 
+                                                                                
+```
 
 ---
 
-## Instrucciones de Instalación y Uso 🛠️
+## 👨‍💻 Perfil del Desarrollador Principal
+* **Nombre**: Misael Pintado
+* **Rol**: Lead Cyberpunk Systems Architect & Full-Stack Security Engineer
+* **Especialidad**: Hardening frontend, encriptación en Sandbox y síntesis de audio retro.
 
-### 1. Configuración de Correo SMTP
-1. Copia el archivo `config.example.json` y renombralo a `config.json`.
-2. Completa tu correo de Gmail y contraseña de aplicación en `config.json`:
-   ```json
-   {
-     "SMTP_SERVER": "smtp.gmail.com",
-     "SMTP_PORT": 587,
-     "SMTP_USER": "misaelpintado7@gmail.com",
-     "SMTP_PASSWORD": "tu_contraseña_de_aplicacion"
-   }
-   ```
+---
 
-### 2. Iniciar el Servidor de Correo
-Ejecuta el servidor en la raíz del proyecto para habilitar el despacho de comprobantes:
-```bash
-python server.py
-```
+## 🚀 Características Avanzadas de Seguridad (Anti-Hacker Shield)
 
-### 3. Ejecutar la Aplicación
-Abre el archivo `index.html` directamente en tu navegador web de preferencia.
+1. **Ofuscación de Almacenamiento Local (`secureStorage`)**:
+   - Toda la base de datos e indicadores de estado están cifrados en **Base64 Unicode** en el navegador del cliente. ¡Cero robos de información de matrículas!
+2. **Inmutabilidad del Core (`Object.freeze`)**:
+   - Los módulos core (`app`, `store`, `matriculas`, `terminal`) están congelados herméticamente, bloqueando manipulaciones de consola o hackeos de funciones.
+3. **Escudo Anti-Ingeniería Inversa (Anti-Debugging)**:
+   - Bloqueo de **clic derecho** e inputs clave de depuración (**F12**, **Ctrl+Shift+I**, **Ctrl+Shift+J**, **Ctrl+U**).
+   - Detección activa con auto-limpieza de consola.
+4. **Content Security Policy (CSP)**:
+   - Política de cabeceras estrictas que previene cualquier inyección de scripts externos (XSS).
+5. **CodeQL Scan Integrado**:
+   - Análisis estático de vulnerabilidades CI/CD activo en cada commit.
+
+---
+
+## 🎮 Elementos Especiales (Modo Hacker Activo)
+
+* **Matrix Full-Screen Rain Overlay**:
+  - Escribe `matrix-rain` en la consola de comandos o haz clic en el botón **"Activar Modo Hacker"** en el encabezado de la terminal para desplegar una cascada interactiva de código verde Matrix en toda tu pantalla. Haz clic para salir y restablecer la conexión.
+* **Pase VIP Gold Sunset**:
+  - Desbloquea el tema dorado exclusivo de neón y permite matricularse en cursos con **0 vacantes**.
+* **Audio Beats Generativo**:
+  - Reproductor synthwave incorporado con analizador de frecuencia de ondas.
+
+---
+
+## 🌐 Enlaces en Vivo
+* **Portal Web Activo**: [misaelpintado14-gif.github.io/insano-tech-hub/](https://misaelpintado14-gif.github.io/insano-tech-hub/)

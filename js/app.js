@@ -496,6 +496,64 @@ const app = (() => {
         }, 1000);
     }
 
+    let matrixInterval = null;
+    function startMatrixRain() {
+        const canvas = document.getElementById('matrix-rain-canvas');
+        if (!canvas) return;
+
+        canvas.classList.remove('hidden');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ$#@%&<>[]{}/\\*+-=".split("");
+        const fontSize = 14;
+        const columns = canvas.width / fontSize;
+
+        const drops = [];
+        for (let i = 0; i < columns; i++) {
+            drops[i] = Math.random() * -100;
+        }
+
+        function draw() {
+            ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = "#00ff88";
+            ctx.font = fontSize + "px monospace";
+            ctx.shadowColor = "#00ff88";
+            ctx.shadowBlur = 4;
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = chars[Math.floor(Math.random() * chars.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+
+        if (matrixInterval) clearInterval(matrixInterval);
+        matrixInterval = setInterval(draw, 33);
+
+        showToast('MODO HACKER ACTIVADO', 'Iniciando lluvia de codigos de encriptacion. Haz clic en la pantalla para salir.', 'success');
+
+        canvas.onclick = () => {
+            clearInterval(matrixInterval);
+            matrixInterval = null;
+            canvas.classList.add('hidden');
+            showToast('MODO HACKER FINALIZADO', 'Conexion segura reestablecida.', 'info');
+        };
+
+        window.onresize = () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        };
+    }
+
     // Tab buttons within single pages
     function initSubTabs() {
         const tabs = document.querySelectorAll('.tab-btn');
@@ -616,6 +674,10 @@ const app = (() => {
         store.init();
         checkVIP();
         initSecurityHardening();
+
+        // Bind hacker mode button
+        const hackerBtn = document.getElementById('btn-hacker-mode');
+        if (hackerBtn) hackerBtn.addEventListener('click', startMatrixRain);
         
         // Landing introduction toast instead of blocking modal! (much cleaner)
         setTimeout(() => {
@@ -630,7 +692,8 @@ const app = (() => {
         showToast,
         checkVIP,
         escapeHTML,
-        sanitizeInput
+        sanitizeInput,
+        startMatrixRain
     };
     Object.freeze(publicAPI);
     return publicAPI;

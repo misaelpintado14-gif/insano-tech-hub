@@ -133,27 +133,8 @@ const terminal = (() => {
             });
         },
         'matrix-rain': () => {
-            printLine('Iniciando cascada de codigo Matrix...', 'text-neon');
-            let count = 0;
-            const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ$#@%&';
-            const interval = setInterval(() => {
-                let line = '';
-                for (let i = 0; i < 40; i++) {
-                    if (Math.random() > 0.8) {
-                        line += `<span style="color:#00ff88; font-weight:bold;">${chars[Math.floor(Math.random() * chars.length)]}</span>`;
-                    } else if (Math.random() > 0.95) {
-                        line += `<span style="color:#ffffff; font-weight:bold;">${chars[Math.floor(Math.random() * chars.length)]}</span>`;
-                    } else {
-                        line += `<span style="color:#032b18;">${chars[Math.floor(Math.random() * chars.length)]}</span>`;
-                    }
-                }
-                printLine(line);
-                count++;
-                if (count > 25) {
-                    clearInterval(interval);
-                    printLine('Cascada completada. Conexion Matrix restablecida.', 'text-neon');
-                }
-            }, 100);
+            printLine('Iniciando cascada de codigo Matrix en pantalla completa...', 'text-neon');
+            app.startMatrixRain();
         },
         'crypto-tracker': () => {
             printLine('Obteniendo cotizaciones en tiempo real...', 'text-muted');
@@ -326,9 +307,11 @@ const terminal = (() => {
         }
     });
 
-    return {
+    const publicAPI = {
         loadTable: loadTableData,
         print: printLine,
         runTests: runAutomatedTests
     };
+    Object.freeze(publicAPI);
+    return publicAPI;
 })();

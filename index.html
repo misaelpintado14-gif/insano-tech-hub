@@ -766,6 +766,7 @@
                                     <span class="max"></span>
                                 </div>
                                 <span class="terminal-title">insano-shell@IESTP_SYSTEM</span>
+                                <button id="btn-hacker-mode" style="background: none; border: 1px solid var(--secondary-color); color: var(--secondary-color); font-size: 8px; padding: 2px 6px; border-radius: 3px; font-weight: bold; cursor: pointer; text-shadow: 0 0 5px var(--secondary-color); box-shadow: 0 0 5px rgba(var(--secondary-rgb), 0.2); font-family: var(--font-tech); text-transform: uppercase; margin-left: auto;">Activar Modo Hacker</button>
                             </div>
                             
                             <div class="terminal-body" id="terminal-screen">
@@ -845,6 +846,9 @@
 
     <!-- Printable purchase receipt area -->
     <div id="printable-receipt" style="display: none;"></div>
+
+    <!-- Canvas overlay for full-screen Matrix Rain animation -->
+    <canvas id="matrix-rain-canvas" class="hidden" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 99999; background: rgba(0,0,0,0.95); cursor: pointer;"></canvas>
 
     <!-- Application Script Core -->
     <script src="js/particles.js"></script>
