@@ -917,7 +917,7 @@ const store = (() => {
 
         // Set VIP status if bought!
         if (boughtVIP) {
-            localStorage.setItem('isVIPActive', 'true');
+            secureStorage.save('isVIPActive', 'true');
             app.checkVIP();
             app.showToast('VIP ACTIVADO', '¡Felicidades! Has desbloqueado el acceso VIP INSANO en toda la plataforma.', 'success');
         }
@@ -1233,7 +1233,7 @@ const store = (() => {
         if (checkoutBtn) checkoutBtn.addEventListener('click', checkout);
     });
 
-    return {
+    const publicAPI = {
         init: () => {
             renderCatalog();
             updateCartUI();
@@ -1247,4 +1247,6 @@ const store = (() => {
         selectPlan,
         addLicenseWithPlan
     };
+    Object.freeze(publicAPI);
+    return publicAPI;
 })();

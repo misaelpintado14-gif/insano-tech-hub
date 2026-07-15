@@ -38,9 +38,9 @@ const matriculas = (() => {
 
     // Load Database from storage
     function loadDB() {
-        const stored = localStorage.getItem('insano_academic_db');
+        const stored = secureStorage.get('insano_academic_db');
         if (stored) {
-            db = JSON.parse(stored);
+            db = stored;
         } else {
             db.estudiantes = defaultStudents;
             db.cursos = defaultCourses;
@@ -51,7 +51,7 @@ const matriculas = (() => {
     }
 
     function saveDB() {
-        localStorage.setItem('insano_academic_db', JSON.stringify(db));
+        secureStorage.save('insano_academic_db', db);
         updateDashboardWidget();
     }
 
@@ -246,7 +246,7 @@ const matriculas = (() => {
         // Check vacancy availability (RF05, CP07)
         for (let course of selectedCourses) {
             if (course.vacantes_libres <= 0) {
-                if (localStorage.getItem('isVIPActive') === 'true') {
+                if (secureStorage.get('isVIPActive') === 'true') {
                     app.showToast('VIP EXPRESS', `Pase VIP detectado: Saltando limite de vacantes para ${course.nombre}.`, 'success');
                 } else {
                     app.showToast('SIN VACANTES', `El curso ${course.nombre} se encuentra completamente lleno.`, 'error');
@@ -372,7 +372,7 @@ const matriculas = (() => {
             coursesDiv.innerHTML = db.cursos.map(crs => `
                 <div class="course-check-item">
                     <label class="course-check-label">
-                        <input type="checkbox" name="academic-course" value="${crs.id}" data-credits="${crs.creditos}" ${(crs.vacantes_libres <= 0 && localStorage.getItem('isVIPActive') !== 'true') ? 'disabled' : ''}>
+                        <input type="checkbox" name="academic-course" value="${crs.id}" data-credits="${crs.creditos}" ${(crs.vacantes_libres <= 0 && secureStorage.get('isVIPActive') !== 'true') ? 'disabled' : ''}>
                         <span>${crs.nombre}</span>
                     </label>
                     <div class="course-check-info">
@@ -585,7 +585,7 @@ const matriculas = (() => {
         }
     });
 
-    return {
+    const publicAPI = {
         login,
         logout,
         addStudent,
@@ -596,9 +596,11 @@ const matriculas = (() => {
         refreshAllTables,
         getRawDB: () => db,
         resetDatabase: () => {
-            localStorage.removeItem('insano_academic_db');
+            secureStorage.remove('insano_academic_db');
             loadDB();
             refreshAllTables();
         }
     };
+    Object.freeze(publicAPI);
+    return publicAPI;
 })();

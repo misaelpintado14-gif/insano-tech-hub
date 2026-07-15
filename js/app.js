@@ -4,6 +4,32 @@
              dynamic toast alerts overlay
    ========================================================================== */
 
+// Secure Storage Wrapper (Anti-Hacker Base64 & Unicode Obfuscator)
+window.secureStorage = {
+    save: (key, obj) => {
+        const str = typeof obj === 'string' ? obj : JSON.stringify(obj);
+        const obfuscated = btoa(unescape(encodeURIComponent(str)));
+        localStorage.setItem(key, obfuscated);
+    },
+    get: (key) => {
+        const obfuscated = localStorage.getItem(key);
+        if (!obfuscated) return null;
+        try {
+            const decoded = decodeURIComponent(escape(atob(obfuscated)));
+            try {
+                return JSON.parse(decoded);
+            } catch(e) {
+                return decoded;
+            }
+        } catch(e) {
+            return obfuscated;
+        }
+    },
+    remove: (key) => {
+        localStorage.removeItem(key);
+    }
+};
+
 const app = (() => {
     // Navigation routing map
     const pageDetails = {
@@ -348,7 +374,7 @@ const app = (() => {
                 const theme = btn.getAttribute('data-theme');
 
                 // Exclusive check for Gold Amber theme
-                if (theme === 'amber' && localStorage.getItem('isVIPActive') !== 'true') {
+                if (theme === 'amber' && secureStorage.get('isVIPActive') !== 'true') {
                     showToast('TEMA BLOQUEADO', 'El tema dorado Sunset Amber es exclusivo para usuarios con pase VIP INSANO.', 'error');
                     return;
                 }
@@ -410,7 +436,7 @@ const app = (() => {
     function checkVIP() {
         const badge = document.getElementById('vip-status-badge');
         if (badge) {
-            if (localStorage.getItem('isVIPActive') === 'true') {
+            if (secureStorage.get('isVIPActive') === 'true') {
                 badge.classList.remove('hidden');
             } else {
                 badge.classList.add('hidden');
@@ -597,7 +623,7 @@ const app = (() => {
         }, 1200);
     });
 
-    return {
+    const publicAPI = {
         navigate,
         showModal,
         closeModal,
@@ -606,4 +632,6 @@ const app = (() => {
         escapeHTML,
         sanitizeInput
     };
+    Object.freeze(publicAPI);
+    return publicAPI;
 })();
